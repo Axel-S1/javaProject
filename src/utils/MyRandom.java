@@ -6,7 +6,7 @@ import java.util.Random;
 public class MyRandom {
 	private Random myrandom;
 	
-	public MyRandom() {
+	public MyRandom(){
 		try {     
 			myrandom = SecureRandom.getInstanceStrong(); 
 		} catch (Exception e) {

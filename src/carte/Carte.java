@@ -15,6 +15,12 @@ public abstract class Carte {
 		this.effetSurPopularite = effetSurPopularite;
 	}
 	
+	@Override
+	public String toString() {
+		return titre;
+	}
+	
+	
 	public String getType() {return type;};
 	public String getTitre() {return titre;};
 	public String getDescription() {return description;};
