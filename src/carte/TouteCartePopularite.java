@@ -3,8 +3,10 @@ package carte;
 import utils.MyRandom;
 
 public enum TouteCartePopularite {
-	REVOLTE_ORGANISEE(" Révolte Organisée ", "Au cours d'un abordage, le pirate fait preuve d'une grande bravoure et gagne 1 points de popularité", 0, 1),
-	MAIN_DE_FER      ("    Main de fer    ", "il est fort... trop fort il se blesse", -1, 2);
+	REVOLTE_ORGANISEE	("RÃ©volte organisÃ©e", "WOW ! une rÃ©volte comme on en a jamais vue !", 0, 1),
+	MAIN_DE_FER      	("Main de fer"		, "il est fort... trop fort il se blesse", -1, 2),
+	DISCOURS_INSPIRANT	("Discours Inspirant","WOW ! un discours comme on en a jamais vue !", 0, 1),
+	ABORDAGE_REUSSI     ("Abordage rÃ©ussi"	, "Au cours d'un abordage, le pirate fait preuve d'une grande bravoure et gagne 1 points de popularitï¿½\"", 0, 1);
 	
 	private Carte carte;
 	private static MyRandom myrandom = new MyRandom();

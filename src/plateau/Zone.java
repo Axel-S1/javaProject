@@ -1,10 +1,17 @@
 package plateau;
 
 import carte.Carte;
+import joueur.Pirate;
 
-public abstract class Zone {
-	protected int nbCarte = 0;
-	private static int maxCarte = 100;
+public class Zone {
+	private Pirate pirate;
 	
-	public abstract void placerCarte(Carte carte);
+	public Zone(Pirate pirate) {
+		this.pirate = pirate;
+	}
+	
+	public void placerCarte(Carte carte) {
+		pirate.prendreEffetVie(carte.getEffetSurVie());
+		pirate.prendreEffetPop(carte.getEffetSurPopularite());
+	}
 }

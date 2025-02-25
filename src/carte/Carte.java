@@ -26,6 +26,4 @@ public abstract class Carte {
 	public String getDescription() {return description;};
 	public int getEffetSurVie() {return effetSurVie;};
 	public int getEffetSurPopularite() {return effetSurPopularite;};
-	
-	public abstract void faireAction();
 }

@@ -3,7 +3,6 @@ package test_fonctionnel;
 import carte.Carte;
 import carte.TouteCartePopularite;
 import carte.TouteCarteAttaque;
-import utils.MyRandom;
 
 public class TestCarte {
 	public static void main(String[] args) {
