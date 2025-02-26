@@ -1,0 +1,39 @@
+<uml>
+   <greenVersion="40700"/>
+   <type>
+      <name="=javaProject/src<plateau{Zone.java[Zone"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="31"/>
+      <y="7"/>
+   </type>
+   <type>
+      <name="=javaProject/src<plateau{Plateau.java[Plateau"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="0"/>
+      <y="174"/>
+   </type>
+   <type>
+      <name="=javaProject/src<joueur{Pirate.java[Pirate"/>
+      <height="-1"/>
+      <width="-1"/>
+      <x="330"/>
+      <y="0"/>
+   </type>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.association.AssociationPart"/>
+      <sourceType="=javaProject/src<plateau{Zone.java[Zone"/>
+      <targetType="=javaProject/src<joueur{Pirate.java[Pirate"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+   <relationship>
+      <class="edu.buffalo.cse.green.relationship.composition.CompositionPart"/>
+      <sourceType="=javaProject/src<plateau{Plateau.java[Plateau"/>
+      <targetType="=javaProject/src<plateau{Zone.java[Zone"/>
+      <bendpoints>
+      </bendpoints>
+   </relationship>
+</uml>
+

@@ -6,7 +6,7 @@ public enum TouteCartePopularite {
 	REVOLTE_ORGANISEE	("Révolte organisée", "WOW ! une révolte comme on en a jamais vue !", 0, 1),
 	MAIN_DE_FER      	("Main de fer"		, "il est fort... trop fort il se blesse", -1, 2),
 	DISCOURS_INSPIRANT	("Discours Inspirant","WOW ! un discours comme on en a jamais vue !", 0, 1),
-	ABORDAGE_REUSSI     ("Abordage réussi"	, "Au cours d'un abordage, le pirate fait preuve d'une grande bravoure et gagne 1 points de popularit�\"", 0, 1);
+	ABORDAGE_REUSSI     ("Abordage réussi"	, "Au cours d'un abordage, le pirate fait preuve d'une grande bravoure et gagne 1 points de popularité\"", 0, 1);
 	
 	private Carte carte;
 	private static MyRandom myrandom = new MyRandom();

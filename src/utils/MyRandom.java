@@ -4,16 +4,16 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 public class MyRandom {
-	private Random myrandom;
+	private Random myRand;
 	
 	public MyRandom(){
 		try {     
-			myrandom = SecureRandom.getInstanceStrong(); 
+			myRand = SecureRandom.getInstanceStrong(); 
 		} catch (Exception e) {
 			e.printStackTrace(); }
 	}
 	
 	public int getRandom(int max){
-		return myrandom.nextInt(max);
+		return myRand.nextInt(max);
 	}
 }

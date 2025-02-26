@@ -1,4 +1,4 @@
-package myInterface;
+package my_interface;
 
 import carte.Carte;
 

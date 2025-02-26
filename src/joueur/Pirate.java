@@ -4,7 +4,7 @@ import java.util.Scanner;
 import carte.Carte;
 import carte.TouteCarteAttaque;
 import carte.TouteCartePopularite;
-import myInterface.GameInterface;
+import my_interface.GameInterface;
 import utils.MyRandom;
 
 public class Pirate implements GameInterface{
@@ -116,6 +116,7 @@ public class Pirate implements GameInterface{
 
     @Override
     public void afficherPhraseDeFin() {
+    	System.out.println("");
     	if (vie <= 0) {
     		System.out.println("🏆 Le pirate " + nom + " soupire : \"J'ai perdu, je l'admet !\"");
     	}

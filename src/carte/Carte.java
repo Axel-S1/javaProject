@@ -21,9 +21,9 @@ public abstract class Carte {
 	}
 	
 	
-	public String getType() {return type;};
-	public String getTitre() {return titre;};
-	public String getDescription() {return description;};
-	public int getEffetSurVie() {return effetSurVie;};
-	public int getEffetSurPopularite() {return effetSurPopularite;};
+	public String getType() {return type;}
+	public String getTitre() {return titre;}
+	public String getDescription() {return description;}
+	public int getEffetSurVie() {return effetSurVie;}
+	public int getEffetSurPopularite() {return effetSurPopularite;}
 }
