@@ -2,7 +2,7 @@ package test_fonctionnel;
 
 import plateau.Plateau;
 
-public class TestPlateau {
+public class GameMain {
 	private static Plateau plateau = new Plateau("luffy", "Teach");
 	
 	public static void main(String[] args) {
@@ -13,4 +13,3 @@ public class TestPlateau {
 		
 	}	
 }
-	
