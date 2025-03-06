@@ -1,17 +1,12 @@
 package plateau;
 
 import carte.Carte;
-import joueur.Pirate;
 
 public class Zone {
-	private Pirate pirate;
-	
-	public Zone(Pirate pirate) {
-		this.pirate = pirate;
-	}
+	private Carte[] cartePlacer = new Carte[256];
+	private int nbCarte = 0;
 	
 	public void placerCarte(Carte carte) {
-		pirate.prendreEffetVie(carte.getEffetSurVie());
-		pirate.prendreEffetPop(carte.getEffetSurPopularite());
+		cartePlacer[nbCarte] = carte;
 	}
 }

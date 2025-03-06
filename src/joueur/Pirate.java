@@ -7,9 +7,10 @@ import carte.TouteCartePopularite;
 import my_interface.GameInterface;
 import utils.MyRandom;
 
-public class Pirate implements GameInterface{
+public class Pirate{
 	private String nom;
 	private int id;
+	private char statut = 'N';
 	private int vie = 5;
 	private int popularite = 0;
 	private static int nbCarteMax = 5;
@@ -21,7 +22,6 @@ public class Pirate implements GameInterface{
 		this.nom = nom;
 		this.id = id;
 	}
-	
 	
 	public void piocherCarte(){
 		for (int i = 0; i < nbCarteMax; i++) {
@@ -56,90 +56,51 @@ public class Pirate implements GameInterface{
 	
 	public void prendreEffetVie(int effetSurVie) {
 		vie += effetSurVie;
-		if (effetSurVie != 0) afficherCoupPorterSurVie(effetSurVie);
+		if (effetSurVie != 0); //TODO afficherCoupPorterSurVie(effetSurVie);
 	}
 	
 	public void prendreEffetPop(int effetSurPop) {
 		popularite += effetSurPop;
-		if (effetSurPop != 0)afficherCoupPorterSurPop(effetSurPop);
+		if (effetSurPop != 0); //TODO afficherCoupPorterSurPop(effetSurPop);
 	}
 	
 	public char verifVictoireDefaite(){
 		if (vie <= 0) {
-			return 'L';
+			setStatut('L');
 		}
 		else if (popularite >= 5) {
-			return 'W';
+			setStatut('W');
 		}
-		else return 'N';
+		else setStatut('N');
+		return statut;
+	}
+	
+	public void setStatut(char statut) {
+		this.statut = statut;
+	}
+	
+	
+	public String getNom() {
+		return nom;
 	}
 	
 	public  int getId() {
 		return id;
 	}
 	
-	public void setPop(int pop) {
-		popularite = pop;
+	public char getStatut() {
+		return statut;
 	}
 	
-	public void setVie(int vie) {
-		this.vie = vie;
+	public int getVie() {
+		return vie;
 	}
 	
-	@Override
-    public void afficherDeck() {
-		System.out.println("\n");
-        System.out.println("📜 Main du pirate " + nom + " :");
-        for (int i = 0; i < nbCarteMax; i++) {
-            Carte tempCarte = deck[i];
-            if (tempCarte != null) {
-                System.out.println("  🔹"+ (i+1) +" Carte " + tempCarte.getType() + " : " + tempCarte.getTitre());
-                System.out.println("     ➤ Vie : " + tempCarte.getEffetSurVie() + " | Popularité : " + tempCarte.getEffetSurPopularite());
-            } else {
-                System.out.println("  [ Emplacement vide ]");
-            }
-        }
-        System.out.println("\n");
-    }
-	
-	@Override
-	public void afficherCarteJouer(Carte carte) {
-	    System.out.println("🎴 Le pirate " + nom + " joue la carte : " + carte.getTitre());
-	    System.out.println("    📝 Description : " + carte.getDescription());
-	    System.out.println("\n");
+	public int getPop() {
+		return popularite;
 	}
-
-    @Override
-    public void afficherStatus() {
-        System.out.println("📊 Pirate " + nom + " - Vie : " + vie + " | Popularité : " + popularite);
-    }
-
-    @Override
-    public void afficherPhraseDeFin() {
-    	System.out.println("");
-    	if (vie <= 0) {
-    		System.out.println("🏆 Le pirate " + nom + " soupire : \"J'ai perdu, je l'admet !\"");
-    	}
-    	else if (popularite >= 5) {
-    		System.out.println("🏆 Le pirate " + nom + " crie : \"J'ai gagné cette bataille !\" 🎉");
-    	}
-    }
-    
-    @Override
-    public void afficherCoupPorterSurVie(int effetSurVie) {
-        if (effetSurVie > 0)
-            System.out.println("❤️ Le pirate " + nom + " récupère " + effetSurVie + " points de vie !");
-        else
-            System.out.println("💔 Le pirate " + nom + " perd " + Math.abs(effetSurVie) + " points de vie !");
-        System.out.println("\n");
-    }
-
-    @Override
-    public void afficherCoupPorterSurPop(int effetSurPop) {
-        if (effetSurPop > 0)
-            System.out.println("📈 La popularité du pirate " + nom + " augmente de " + effetSurPop + " !");
-        else
-            System.out.println("📉 La popularité du pirate " + nom + " diminue de " + Math.abs(effetSurPop) + " !");
-        System.out.println("\n");
-    }
+	
+	public Carte[] getDeck() {
+		return deck;
+	}
 }

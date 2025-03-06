@@ -1,18 +1,20 @@
 package carte;
 
+import joueur.Pirate;
+
 public abstract class Carte {
 	private String type;
 	private String titre;
 	private String description;
 	private int effetSurVie;
-	private int effetSurPopularite;
+	private int effetSurPop;
 	
-	protected Carte(String type, String titre, String description, int effetSurVie, int effetSurPopularite){
+	protected Carte(String type, String titre, String description, int effetSurVie, int effetSurPop){
 		this.type = type;
 		this.titre = titre;
 		this.description = description;
 		this.effetSurVie = effetSurVie;
-		this.effetSurPopularite = effetSurPopularite;
+		this.effetSurPop = effetSurPop;
 	}
 	
 	@Override
@@ -20,10 +22,10 @@ public abstract class Carte {
 		return titre;
 	}
 	
-	
+	public abstract void faireEffet(Pirate pirate);
 	public String getType() {return type;}
 	public String getTitre() {return titre;}
 	public String getDescription() {return description;}
 	public int getEffetSurVie() {return effetSurVie;}
-	public int getEffetSurPopularite() {return effetSurPopularite;}
+	public int getEffetSurPop() {return effetSurPop;}
 }

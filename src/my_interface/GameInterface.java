@@ -1,12 +1,13 @@
 package my_interface;
 
 import carte.Carte;
+import joueur.Pirate;
 
 public interface GameInterface{
-    void afficherDeck();
-    void afficherStatus();
-    void afficherPhraseDeFin();
-    void afficherCarteJouer(Carte carte);
-    void afficherCoupPorterSurVie(int effetSurVie);
-    void afficherCoupPorterSurPop(int effetSurPop);
+    void afficherStatus(Pirate pirate);
+    void afficherPhraseDeFin(Pirate pirate);
+    void afficherDeck(Pirate pirate);
+    void afficherCarteJouer(Pirate pirate, Carte carte);
+    void afficherCoupPorterSurVie(Pirate pirate, int effetSurVie);
+    void afficherCoupPorterSurPop(Pirate pirate, int effetSurPop);
 }

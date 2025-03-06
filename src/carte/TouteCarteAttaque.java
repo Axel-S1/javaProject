@@ -3,7 +3,7 @@ package carte;
 import utils.MyRandom;
 
 public enum TouteCarteAttaque {
-	COUP_DE_SABRE("   Coup de sabre   ", "Le pirate inflige un coup de sabre fÃ©roce Ã  son adversaire et lui inflige 2 point de vie", -2, 0);
+	COUP_DE_SABRE("   Coup de sabre   ", "Le pirate inflige un coup de sabre féroce à son adversaire et lui inflige 2 point de vie", -2, 0);
 	
 	private Carte carte;
 	private static MyRandom myrandom = new MyRandom();
