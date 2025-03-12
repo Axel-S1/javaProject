@@ -1,11 +1,9 @@
 package joueur;
-import java.util.Scanner;
 
+import java.util.Scanner;
 import carte.Carte;
-import carte.TouteCarteAttaque;
-import carte.TouteCartePopularite;
-import my_interface.GameInterface;
-import utils.MyRandom;
+import carte.Pioche;
+import my_interface.Journal;
 
 public class Pirate{
 	private String nom;
@@ -15,19 +13,18 @@ public class Pirate{
 	private int popularite = 0;
 	private static int nbCarteMax = 5;
 	private Carte[] deck = new Carte[nbCarteMax];
-	private MyRandom myrandom = new MyRandom();
 	private static final Scanner scanner = new Scanner(System.in);
+	private static Journal journal = new Journal();
 	 
 	public Pirate(String nom, int id){
 		this.nom = nom;
 		this.id = id;
 	}
 	
-	public void piocherCarte(){
+	public void piocherCarte(Pioche pioche){
 		for (int i = 0; i < nbCarteMax; i++) {
 			if(deck[i] == null) {
-				if (myrandom.getRandom(2) == 0) deck[i] = TouteCartePopularite.getRandomCarte();
-				else deck[i] = TouteCarteAttaque.getRandomCarte();
+				deck[i] = pioche.prendreCarte();
 			}
 				
 		}
@@ -55,13 +52,17 @@ public class Pirate{
 	}
 	
 	public void prendreEffetVie(int effetSurVie) {
-		vie += effetSurVie;
-		if (effetSurVie != 0); //TODO afficherCoupPorterSurVie(effetSurVie);
+		if (effetSurVie != 0){
+			vie += effetSurVie;
+			journal.afficherCoupPorterSurVie(nom, effetSurVie);
+		}
 	}
 	
 	public void prendreEffetPop(int effetSurPop) {
-		popularite += effetSurPop;
-		if (effetSurPop != 0); //TODO afficherCoupPorterSurPop(effetSurPop);
+		if (effetSurPop != 0) {
+			popularite += effetSurPop;
+			journal.afficherCoupPorterSurPop(nom, effetSurPop);
+		}
 	}
 	
 	public char verifVictoireDefaite(){
@@ -79,6 +80,15 @@ public class Pirate{
 		this.statut = statut;
 	}
 	
+	public void pourAfficherDeck() {
+		journal.afficherPhraseDeDeck("La Main du pirate " + nom + " :");
+		for (int i = 0; i < nbCarteMax; i++) {
+			if (deck[i] != null) {
+				journal.afficherCarte(i+1, deck[i].getType(), deck[i].getTitre(), 
+						deck[i].getEffetSurVie(), deck[i].getEffetSurPop());
+			}
+		}
+	}
 	
 	public String getNom() {
 		return nom;

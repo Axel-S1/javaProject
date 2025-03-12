@@ -1,15 +1,20 @@
 package jeu;
 
 import carte.Carte;
+import carte.Pioche;
 import joueur.Pirate;
 import my_interface.Journal;
 import plateau.Plateau;
 
 public class GameMain {
 	private static int nbMaxPirate = 2;
+	private static int nbCarteAttaque = 50;
+	private static int nbCartePop = 100;
+	private static int nbCarteRegen = 15;
 	private static Plateau plateau = new Plateau();
 	private static Pirate[] pirate = new Pirate[nbMaxPirate];
-	private static Journal journal = new Journal();
+	private static Pioche pioche = new Pioche(nbCarteAttaque, nbCartePop, nbCarteRegen);
+	public static final Journal journal = new Journal();
 	
 	private static void initJeu() {
 		pirate[0] = new Pirate("Luffy", 0);
@@ -17,8 +22,8 @@ public class GameMain {
 	}
 	
 	private static void afficherStatusDesPirates(){
-		journal.afficherStatus(pirate[0]);
-		journal.afficherStatus(pirate[1]);
+		journal.afficherStatus(pirate[0].getNom(), pirate[0].getVie(), pirate[0].getPop());
+		journal.afficherStatus(pirate[1].getNom(), pirate[1].getVie(), pirate[1].getPop());
 	}
 	
 	private static int trouverPirateID(Carte carte, int currentID) {
@@ -39,13 +44,13 @@ public class GameMain {
 		for(int i = 0; i < nbMaxPirate; i++) {
 			afficherStatusDesPirates();
 			
-			pirate[i].piocherCarte();
-			journal.afficherDeck(pirate[i]);
+			pirate[i].piocherCarte(pioche);
+			pirate[i].pourAfficherDeck();
 			
 			Carte carteAJouer = pirate[i].demanderChoix();
+			journal.afficherCarteJouer(pirate[i].getNom(), carteAJouer.getTitre(), carteAJouer.getDescription());
 			carteAJouer.faireEffet(pirate[trouverPirateID(carteAJouer, i)]);
 			plateau.ajouterALaZone(carteAJouer, i);
-			journal.afficherCarteJouer(pirate[i], carteAJouer);
 			pirate[i].supprimerCarte(carteAJouer);
 			
 			if (pirate[0].verifVictoireDefaite() != 'N' || pirate[1].verifVictoireDefaite() != 'N') return doFinal();
@@ -63,7 +68,7 @@ public class GameMain {
 		}while(partieEnCours);
 		
 		for (int i = 0; i < nbMaxPirate; i++) {
-			journal.afficherPhraseDeFin(pirate[i]);
+			journal.afficherPhraseDeFin(pirate[i].getNom(), pirate[i].getStatut());
 		}
 	}	
 }

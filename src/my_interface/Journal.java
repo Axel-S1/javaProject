@@ -1,65 +1,58 @@
 package my_interface;
 
-import carte.Carte;
-import joueur.Pirate;
-
 public class Journal implements GameInterface{
 	
 	@Override
-    public void afficherDeck(Pirate pirate){
+	public void afficherPhraseDeDeck(String phrase) {
 		System.out.println("\n");
-        System.out.println("ðŸ“œ Main du pirate " + pirate.getNom() + " :");
-        Carte[] deck = pirate.getDeck();
-        for (int i = 0; i < 5; i++) {
-            Carte tempCarte = deck[i];
-            if (tempCarte != null) {
-                System.out.println("  ðŸ”¹"+ (i+1) +" Carte " + tempCarte.getType() + " : " + tempCarte.getTitre());
-                System.out.println("     âž¤ Vie : " + tempCarte.getEffetSurVie() + " | PopularitÃ© : " + tempCarte.getEffetSurPop());
-            } else {
-                System.out.println("  [ Emplacement vide ]");
-            }
-        }
-        System.out.println("\n");
+		System.out.println(phrase);
+	}
+	
+	@Override
+    public void afficherCarte(int numCarte, String typeCarte, String titreCarte, int effetVieCarte, int effetPopCarte){
+        System.out.println(" - "+ numCarte +" Carte " + typeCarte + " : " + titreCarte);
+        System.out.println("     - Vie : " + effetVieCarte + " | Popularité : " + effetPopCarte);
+        System.out.println("");
     }
 	
 	@Override
-	public void afficherCarteJouer(Pirate pirate, Carte carte) {
-	    System.out.println("ðŸŽ´ Le pirate " + pirate.getNom() + " joue la carte : " + carte.getTitre());
-	    System.out.println("    ðŸ“� Description : " + carte.getDescription());
+	public void afficherCarteJouer(String nomPirate, String titreCarte, String descCarte) {
+	    System.out.println(nomPirate + " joue la carte : " + titreCarte);
+	    System.out.println("Description : " + descCarte);
 	    System.out.println("\n");
 	}
 
     @Override
-    public void afficherStatus(Pirate pirate) {
-        System.out.println("ðŸ“Š Pirate " + pirate.getNom() + " - Vie : " + pirate.getVie() + " | PopularitÃ© : " + pirate.getPop());
+    public void afficherStatus(String nomPirate, int viePirate, int popPirate) {
+        System.out.println("le Pirate " + nomPirate + " - Vie : " + viePirate + " | Popularité : " + popPirate);
     }
 
     @Override
-    public void afficherPhraseDeFin(Pirate pirate) {
+    public void afficherPhraseDeFin(String nomPirate, char statutPirate) {
     	System.out.println("");
-    	if (pirate.getStatut() == 'L') {
-    		System.out.println("ðŸ�† Le pirate " + pirate.getNom() + " soupire : \"J'ai perdu, je l'admet !\"");
+    	if (statutPirate == 'L') {
+    		System.out.println(nomPirate + " soupire : \"J'ai perdu, je l'admet !\"");
     	}
     	else{
-    		System.out.println("ðŸ�† Le pirate " + pirate.getNom() + " crie : \"J'ai gagnÃ© cette bataille !\" ðŸŽ‰");
+    		System.out.println(nomPirate + " crie : \"J'ai gagné cette bataille !\"");
     	}
     }
     
     @Override
-    public void afficherCoupPorterSurVie(Pirate pirate, int effetSurVie) {
+    public void afficherCoupPorterSurVie(String nomPirate, int effetSurVie) {
         if (effetSurVie > 0)
-            System.out.println("â�¤ï¸� Le pirate " + pirate.getNom() + " rÃ©cupÃ¨re " + effetSurVie + " points de vie !");
+            System.out.println("Le pirate " + nomPirate + " récupère " + effetSurVie + " points de vie !");
         else
-            System.out.println("ðŸ’” Le pirate " + pirate.getNom() + " perd " + Math.abs(effetSurVie) + " points de vie !");
+            System.out.println("Le pirate " + nomPirate + " perd " + Math.abs(effetSurVie) + " points de vie !");
         System.out.println("\n");
     }
 
     @Override
-    public void afficherCoupPorterSurPop(Pirate pirate, int effetSurPop) {
+    public void afficherCoupPorterSurPop(String nomPirate, int effetSurPop) {
         if (effetSurPop > 0)
-            System.out.println("ðŸ“ˆ La popularitÃ© du pirate " + pirate.getNom() + " augmente de " + effetSurPop + " !");
+            System.out.println("La popularité du pirate " + nomPirate + " augmente de " + effetSurPop + " !");
         else
-            System.out.println("ðŸ“‰ La popularitÃ© du pirate " + pirate.getNom() + " diminue de " + Math.abs(effetSurPop) + " !");
+            System.out.println("La popularité du pirate " + nomPirate + " diminue de " + Math.abs(effetSurPop) + " !");
         System.out.println("\n");
     }
 }
