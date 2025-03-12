@@ -8,5 +8,6 @@ public class Zone {
 	
 	public void placerCarte(Carte carte) {
 		cartePlacer[nbCarte] = carte;
+		nbCarte++;
 	}
 }

@@ -55,4 +55,11 @@ public class Journal implements GameInterface{
             System.out.println("La popularité du pirate " + nomPirate + " diminue de " + Math.abs(effetSurPop) + " !");
         System.out.println("\n");
     }
+    
+    @Override
+    public void demanderChoix() {
+    	System.out.print("Choisissez une carte (1-5) : ");
+    	System.out.print("\n");
+    }
+    
 }

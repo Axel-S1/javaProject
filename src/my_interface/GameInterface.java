@@ -7,5 +7,6 @@ public interface GameInterface{
     void afficherCarteJouer(String nomPirate, String titreCarte, String descCarte);
     void afficherCoupPorterSurVie(String nomPirate, int effetSurVie);
     void afficherCoupPorterSurPop(String nomPirate, int effetSurPop);
-    public void afficherPhraseDeDeck(String phrase);
+    void afficherPhraseDeDeck(String phrase);
+    void demanderChoix();
 }

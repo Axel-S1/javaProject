@@ -14,7 +14,7 @@ public class GameMain {
 	private static Plateau plateau = new Plateau();
 	private static Pirate[] pirate = new Pirate[nbMaxPirate];
 	private static Pioche pioche = new Pioche(nbCarteAttaque, nbCartePop, nbCarteRegen);
-	public static final Journal journal = new Journal();
+	private static final Journal journal = new Journal();
 	
 	private static void initJeu() {
 		pirate[0] = new Pirate("Luffy", 0);

@@ -34,7 +34,7 @@ public class Pirate{
 	    int choix = -1;
 
 	    while (choix < 1 || choix > 5 || deck[choix - 1] == null) {
-	        System.out.print("Choisissez une carte (1-5) : ");
+	    	journal.demanderChoix();
 	        if (scanner.hasNextInt()) choix = scanner.nextInt();
 	        else scanner.next();
 	    }
