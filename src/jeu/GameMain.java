@@ -10,15 +10,18 @@ public class GameMain {
 	private static int nbMaxPirate = 2;
 	private static int nbCarteAttaque = 50;
 	private static int nbCartePop = 100;
-	private static int nbCarteRegen = 15;
+	private static int nbCarteRegen = 25;
+	private static int nbCarteSpeciale = 25;
 	private static Plateau plateau = new Plateau();
 	private static Pirate[] pirate = new Pirate[nbMaxPirate];
-	private static Pioche pioche = new Pioche(nbCarteAttaque, nbCartePop, nbCarteRegen);
+	private static Pioche pioche = new Pioche(nbCarteAttaque, nbCartePop, nbCarteRegen, nbCarteSpeciale);
 	private static final Journal journal = new Journal();
 	
 	private static void initJeu() {
 		pirate[0] = new Pirate("Luffy", 0);
 		pirate[1] = new Pirate("Teach", 0);
+		pirate[0].piocherCarte(pioche);
+		pirate[1].piocherCarte(pioche);
 	}
 	
 	private static void afficherStatusDesPirates(){
@@ -27,7 +30,8 @@ public class GameMain {
 	}
 	
 	private static int trouverPirateID(Carte carte, int currentID) {
-		if (carte.getType().equals("attaque")) return ((currentID+1)%2);
+		String typeCarte = carte.getType();
+		if (typeCarte.equals("attaque") || typeCarte.equals("speciale")) return ((currentID+1)%2);
 		return currentID;
 	}
 	
@@ -44,14 +48,21 @@ public class GameMain {
 		for(int i = 0; i < nbMaxPirate; i++) {
 			afficherStatusDesPirates();
 			
-			pirate[i].piocherCarte(pioche);
-			pirate[i].pourAfficherDeck();
+			if(pirate[i].getPrisonStatut()){
+				journal.afficherPhrasePirate(pirate[i].getNom() + " : Pourquoi je suis en prison ! Je ne peux pas jouer !!!\n");
+				pirate[i].setPrisonStatut(false);
+			}else {
+				pirate[i].piocherCarte(pioche);
+				pirate[i].pourAfficherDeck();
+				
+				Carte carteAJouer = pirate[i].demanderChoix();
+				journal.afficherCarteJouer(pirate[i].getNom(), carteAJouer.getTitre(), carteAJouer.getDescription());
+				carteAJouer.faireEffet(pirate[trouverPirateID(carteAJouer, i)]);
+				plateau.ajouterALaZone(carteAJouer, i);
+				pirate[i].supprimerCarte(carteAJouer);
+				pirate[i].piocherCarte(pioche);
+			}
 			
-			Carte carteAJouer = pirate[i].demanderChoix();
-			journal.afficherCarteJouer(pirate[i].getNom(), carteAJouer.getTitre(), carteAJouer.getDescription());
-			carteAJouer.faireEffet(pirate[trouverPirateID(carteAJouer, i)]);
-			plateau.ajouterALaZone(carteAJouer, i);
-			pirate[i].supprimerCarte(carteAJouer);
 			
 			if (pirate[0].verifVictoireDefaite() != 'N' || pirate[1].verifVictoireDefaite() != 'N') return doFinal();
 		}

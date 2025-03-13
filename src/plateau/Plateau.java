@@ -10,7 +10,9 @@ public class Plateau {
 	
 	private Zone trouverZone(Carte carte, int pirateID){
 		
-		if (carte.getType().equals("attaque")) {
+		String typeCarte = carte.getType();
+		
+		if (typeCarte.equals("attaque") || typeCarte.equals("speciale")) {
 			return zoneAttaque;
 		}
 		else {

@@ -3,7 +3,7 @@ package my_interface;
 public class Journal implements GameInterface{
 	
 	@Override
-	public void afficherPhraseDeDeck(String phrase) {
+	public void afficherPhrasePirate(String phrase) {
 		System.out.println("\n");
 		System.out.println(phrase);
 	}
@@ -14,6 +14,12 @@ public class Journal implements GameInterface{
         System.out.println("     - Vie : " + effetVieCarte + " | Popularité : " + effetPopCarte);
         System.out.println("");
     }
+	
+	public void afficherCarteSpeciale(int numCarte, String typeCarte, String titreCarte, String descCarte){
+		System.out.println(" - "+ numCarte +" Carte " + typeCarte + " : " + titreCarte);
+        System.out.println("     - Description : " + descCarte);
+        System.out.println("");
+	}
 	
 	@Override
 	public void afficherCarteJouer(String nomPirate, String titreCarte, String descCarte) {

@@ -3,22 +3,24 @@ package carte;
 import utils.MyRandom;
 
 public class Pioche {
-	private static int nbCarteMax = 500;
+	private static int nbCarteMax = 200;
 	private Carte[] pilleDeCarte = new Carte[nbCarteMax];
 	private int nbCarte = 0;
 	
 	private int nbCarteAttaque = 0;
 	private int nbCartePop = 0;
 	private int nbCarteRegen = 0;
+	private int nbCarteSpeciale = 0;
 	
 	
 	private static MyRandom myrandom = new MyRandom();
 	
 	
-	public Pioche(int nbCarteAttaque, int nbCartePop, int nbCarteRegen){
+	public Pioche(int nbCarteAttaque, int nbCartePop, int nbCarteRegen, int nbCarteSpeciale){
 		this.nbCarteAttaque = nbCarteAttaque;
 		this.nbCartePop = nbCartePop;
 		this.nbCarteRegen = nbCarteRegen;
+		this.nbCarteSpeciale = nbCarteSpeciale;
 		remplirPioche();
 	}
 	
@@ -36,7 +38,6 @@ public class Pioche {
 		return carteToreturn;
 	}
 	
-	
 	private void remplirPioche(){
 		for(int i = 0; i < nbCarteAttaque; i++) 			pilleDeCarte[i] = TouteCarteAttaque.getRandomCarte();
 		nbCarte += nbCarteAttaque;
@@ -46,5 +47,8 @@ public class Pioche {
 		
 		for(int i = nbCarte; i < nbCarte+nbCarteRegen; i++)	pilleDeCarte[i] = TouteCarteRegen.getRandomCarte();
 		nbCarte += nbCarteRegen;
+		
+		for(int i = nbCarte; i < nbCarte+nbCarteSpeciale; i++)	pilleDeCarte[i] = TouteCarteSpeciale.getRandomCarte();
+		nbCarte += nbCarteSpeciale;
 	}
 }
