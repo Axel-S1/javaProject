@@ -35,20 +35,14 @@ public class Pirate{
 	}
 	
 	public Carte demanderChoix() {
-		if(!isInPrison) {
-			int choix = -1;
+		int choix = -1;
 
-		    while (choix < 1 || choix > 5 || deck[choix - 1] == null) {
-		    	journal.demanderChoix();
-		        if (scanner.hasNextInt()) choix = scanner.nextInt();
-		        else scanner.next();
-		    }
-		    return deck[choix - 1];
-		}else {
-			journal.afficherPhrasePirate(nom + " : Pourquoi je suis en prison ! Je ne peux pas jouer !!!\n");
-			isInPrison = false;
-			return null;
-		}
+	    while (choix < 1 || choix > 5 || deck[choix - 1] == null) {
+	    	journal.demanderChoix();
+	        if (scanner.hasNextInt()) choix = scanner.nextInt();
+	        else scanner.next();
+	    }
+	    return deck[choix - 1];
 		
 	}
 	
