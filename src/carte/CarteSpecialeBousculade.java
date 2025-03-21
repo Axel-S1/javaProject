@@ -11,7 +11,8 @@ public class CarteSpecialeBousculade extends Carte {
 	@Override
 	public void faireEffet(Pirate pirate) {
 		for (int i = 0; i < 5; i++) {
-			pirate.supprimerCarte(pirate.getDeck()[i]);
+			Carte carteASupprimer = pirate.getDeck()[i];
+			if (carteASupprimer != null) pirate.supprimerCarte(carteASupprimer);
 		}
 	}
 	

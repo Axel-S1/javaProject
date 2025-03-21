@@ -8,10 +8,10 @@ import plateau.Plateau;
 
 public class GameMain {
 	private static int nbMaxPirate = 2;
-	private static int nbCarteAttaque = 50;
+	private static int nbCarteAttaque = 25;
 	private static int nbCartePop = 100;
 	private static int nbCarteRegen = 25;
-	private static int nbCarteSpeciale = 25;
+	private static int nbCarteSpeciale = 50;
 	private static Plateau plateau = new Plateau();
 	private static Pirate[] pirate = new Pirate[nbMaxPirate];
 	private static Pioche pioche = new Pioche(nbCarteAttaque, nbCartePop, nbCarteRegen, nbCarteSpeciale);
@@ -60,7 +60,6 @@ public class GameMain {
 				carteAJouer.faireEffet(pirate[trouverPirateID(carteAJouer, i)]);
 				plateau.ajouterALaZone(carteAJouer, i);
 				pirate[i].supprimerCarte(carteAJouer);
-				pirate[i].piocherCarte(pioche);
 			}
 			
 			
